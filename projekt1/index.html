@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll Backgrounds</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAV BAR -->
+    <div class="nav-bar">
+        <button class="pageButton" id="leftButton" onclick="selectPage(-1)">
+            <img class="buttonImg" src="Art/GalleryButton.png" alt="button image">
+        </button>
+        <button class="pageButton" id="homeButton" onclick="selectPage(0)">
+            <img class="buttonImg" src="Art/HomeButton.png" alt="button image">
+        </button>
+        <button class="pageButton" id="rightButton" onclick="selectPage(1)">
+            <img class="buttonImg" src="Art/ContactButton.png" alt="button image">
+        </button>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="container" id="scroll-container">
+        <!-- GALLERY -->
+        <div class="sideSection gallery">
+            
+            <img src="Art/wdai-backdrop-left-side.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
+            
+            <div class="scrollable">
+                <div class="gallery-container">
+                    <img src="Gallery/image1.jpg" alt="Gallery Image 1" class="gallery-item">
+                    <img src="Gallery/image2.jpg" alt="Gallery Image 2" class="gallery-item">
+                    <img src="Gallery/image3.jpg" alt="Gallery Image 3" class="gallery-item">
+                    <img src="Gallery/image4.jpg" alt="Gallery Image 4" class="gallery-item">
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="section home">
+            <img src="Art/wdai-backdrop-main.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
+            <div id="star-container" class="stars"></div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="sideSection contact">
+            <img src="Art/wdai-backdrop-right-side.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
