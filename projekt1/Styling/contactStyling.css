@@ -1,0 +1,47 @@
+form {
+    max-width: 400px;
+    margin: auto;
+    background: transparent;
+    background-color: transparent;
+}
+.contact-container {
+    position:absolute;
+    top: 160px;
+    left: 1260px;
+    width: 100%;
+    height: 100%;
+  }
+input, textarea {
+    width: 152%;
+    border: transparent;
+    border-radius: 4px;
+    background: transparent;
+    padding: 25px;
+}
+.emailInput {
+    color: lightgrey;
+    font-size: 40px;
+}
+.topicInput {
+    font-size: 50px;
+    margin-top: 36px;
+    color: white;
+}
+.bodyInput {
+    color: grey;
+    font-size: 25px;
+    padding-bottom: 300px;
+}
+.contactButton {
+    padding: 10px;
+    transform: translate(275px);
+    background-color: transparent;
+    color: transparent;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.contactButton:hover {
+    border-color: #45a049;
+}

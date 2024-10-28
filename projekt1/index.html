@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Scroll Backgrounds</title>
+    <title> star watching  </title>
 
     <link rel="stylesheet" href="Styling/generalStyling.css">
     <link rel="stylesheet" href="Styling/navigationStyling.css">
     <link rel="stylesheet" href="Styling/galleryStyling.css">
     <link rel="stylesheet" href="Styling/starStyling.css">
     <link rel="stylesheet" href="Styling/labelStyling.css">
+    <link rel="stylesheet" href="Styling/contactStyling.css">
 
 </head>
 
@@ -60,7 +61,19 @@
 
         <!-- CONTACT -->
         <div class="sideSection contact">
+            <!-- BACKGROUND -->
             <img src="Art/wdai-backdrop-right-side.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
+            
+            <!-- CONTACT FORM -->
+            <div class = "contact-container">
+                <form action="your-server-endpoint" method="post">
+                    <input class = "emailInput" type="email" id="email" name="email" placeholder="Enter your email here..." required>
+                    <input class = "topicInput" type="text" id="topic" name="topic" placeholder="Enter the topic here..." required>
+                    <textarea class = "bodyInput" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>    
+                    <button class = "contactButton" type="submit"> Send Message </button>
+                </form>
+            </div>
+            
         </div>
 
     </div>

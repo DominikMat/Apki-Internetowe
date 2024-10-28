@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Contact Us</h2>
+
+<form action="your-server-endpoint" method="post">
+    <input class = "emailInput" type="email" id="email" name="email" placeholder="Enter your email here..." required>
+    <input class = "topicInput" type="text" id="topic" name="topic" placeholder="Enter the topic here..." required>
+    <textarea class = "bodyInput" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>    
+
+    <button type="submit">Send Message</button>
+</form>
+
+</body>
+</html>
