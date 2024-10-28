@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smooth Scroll Backgrounds</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="Styling/generalStyling.css">
+    <link rel="stylesheet" href="Styling/navigationStyling.css">
+    <link rel="stylesheet" href="Styling/galleryStyling.css">
+    <link rel="stylesheet" href="Styling/starStyling.css">
+    <link rel="stylesheet" href="Styling/labelStyling.css">
+
 </head>
+
 <body>
     <!-- NAV BAR -->
     <div class="nav-bar">
         <button class="pageButton" id="leftButton" onclick="selectPage(-1)">
             <img class="buttonImg" src="Art/GalleryButton.png" alt="button image">
         </button>
-        <button class="pageButton" id="homeButton" onclick="selectPage(0)">
+        <button class="pageButton homeButton" id="homeButton" onclick="selectPage(0)">
             <img class="buttonImg" src="Art/HomeButton.png" alt="button image">
         </button>
         <button class="pageButton" id="rightButton" onclick="selectPage(1)">
@@ -20,11 +28,12 @@
         </button>
     </div>
 
+
     <!-- BACKGROUND -->
     <div class="container" id="scroll-container">
+
         <!-- GALLERY -->
         <div class="sideSection gallery">
-            
             <img src="Art/wdai-backdrop-left-side.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
             
             <div class="scrollable">
@@ -38,17 +47,25 @@
         </div>
 
         <!-- MAIN -->
-        <div class="section home">
-            <img src="Art/wdai-backdrop-main.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
-            <div id="star-container" class="stars"></div>
+        <div class="section home" id = "sectionHome">
+            <img src="Art/wdai-backdrop-main.png" alt="starry night" width="100%" height="100%" style="object-fit: cover; position: absolute; left: 50vw; max-width: 100vw; max-height: 100vh; z-index: -1;">
+
+            <div id="star-container" class="stars">
+                <canvas id="star-lines"></canvas>
+            </div>
+            
+            
+            <button id="toggle-lines" class="toggle-button">Show Lines</button>
         </div>
 
         <!-- CONTACT -->
         <div class="sideSection contact">
             <img src="Art/wdai-backdrop-right-side.png" alt="starry night" width="100%" height="100%" style="object-fit: cover;">
         </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="Code/stargazing.js"></script>
+    <script src="Code/pageScrolling.js"></script>
 </body>
 </html>
