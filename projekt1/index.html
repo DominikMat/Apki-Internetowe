@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="Styling/starStyling.css">
     <link rel="stylesheet" href="Styling/labelStyling.css">
     <link rel="stylesheet" href="Styling/contactStyling.css">
+    <link rel="stylesheet" href="Styling/footerStyling.css">
 
 </head>
 
@@ -30,7 +31,7 @@
     </div>
 
 
-    <!-- BACKGROUND -->
+    <!-- MAIN SITE BODY -->
     <div class="container" id="scroll-container">
 
         <!-- GALLERY -->
@@ -39,10 +40,12 @@
             
             <div class="scrollable">
                 <div class="gallery-container">
+                    <video style = "height:auto" src="Gallery/dominikParkour.mp4" alt="Gallery Video 1" class="gallery-item" controls> </video>
                     <img src="Gallery/image1.jpg" alt="Gallery Image 1" class="gallery-item">
                     <img src="Gallery/image2.jpg" alt="Gallery Image 2" class="gallery-item">
                     <img src="Gallery/image3.jpg" alt="Gallery Image 3" class="gallery-item">
                     <img src="Gallery/image4.jpg" alt="Gallery Image 4" class="gallery-item">
+                    <img src="Gallery/image5.jpg" alt="Gallery Image 5" class="gallery-item">
                 </div>
             </div>
         </div>
@@ -66,11 +69,15 @@
             
             <!-- CONTACT FORM -->
             <div class = "contact-container">
-                <form action="your-server-endpoint" method="post">
+                <form onsubmit="onContactFromSent(event)">
                     <input class = "emailInput" type="email" id="email" name="email" placeholder="Enter your email here..." required>
-                    <input class = "topicInput" type="text" id="topic" name="topic" placeholder="Enter the topic here..." required>
+                    <select class = "topicInput" id="topicInput" name="topic" required>
+                        <option style = "color: lightgrey;" value="">--Choose Topic--</option>
+                        <option value="topic1">Topic 1</option>
+                        <option value="topic2">Topic 2</option>
+                        <option value="topic3">Topic 3</option>
                     <textarea class = "bodyInput" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>    
-                    <button class = "contactButton" type="submit"> Send Message </button>
+                    <button class = "toggle-button" id = "contactButton" type="submit"> Send Message </button>
                 </form>
             </div>
             
@@ -78,6 +85,13 @@
 
     </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <img id="footerImg" src="Art/FooterText.png" alt="(c) Dominik Matuszczyk">
+    </footer>
+
+    <script src="Code/constellationData.js"></script>
+    <script src="Code/handleContact.js"></script>
     <script src="Code/stargazing.js"></script>
     <script src="Code/pageScrolling.js"></script>
 </body>

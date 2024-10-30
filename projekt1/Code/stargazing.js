@@ -1,26 +1,3 @@
-// Define star data with expanded fields
-const constellations = {
-  bigDipper: [
-    { id: 'star1', posX: '40%', posY: '40%', luminance: 0.8, color: 'white', name: 'Dubhe', type: 'Giant', distance: 123, description: 'Part of the Big Dipper asterism', connectedStarId: ['star2', 'star6'] },
-    { id: 'star2', posX: '45%', posY: '45%', luminance: 0.9, color: 'white', name: 'Merak', type: 'Main Sequence', distance: 79, description: 'Bright in Ursa Major', connectedStarId: ['star1', 'star3'] },
-    { id: 'star3', posX: '50%', posY: '50%', luminance: 0.85, color: 'bluish', name: 'Phecda', type: 'Giant', distance: 83, description: '', connectedStarId: ['star2', 'star4'] },
-    { id: 'star4', posX: '55%', posY: '52%', luminance: 0.7, color: 'white', name: 'Megrez', type: 'Main Sequence', distance: 81, description: 'Fainter star in the Big Dipper', connectedStarId: ['star3', 'star5'] },
-    { id: 'star5', posX: '60%', posY: '55%', luminance: 0.6, color: 'white', name: 'Alioth', type: 'Main Sequence', distance: 81, description: '', connectedStarId: ['star4', 'star6'] },
-    { id: 'star6', posX: '65%', posY: '60%', luminance: 0.9, color: 'bluish', name: 'Mizar', type: 'Double Star', distance: 78, description: 'Double star with Alcor', connectedStarId: ['star5', 'star7'] },
-    { id: 'star7', posX: '70%', posY: '65%', luminance: 0.8, color: 'white', name: 'Alkaid', type: 'Giant', distance: 101, description: 'Tail end of the Big Dipper', connectedStarId: ['star6'] }
-  ],
-  orion: [
-    { id: 'star1', posX: '25%', posY: '45%', luminance: 0.9, color: 'red', name: 'Betelgeuse', type: 'Supergiant', distance: 642, description: 'Massive red star in Orion', connectedStarId: ['star2', 'star3'] },
-    { id: 'star2', posX: '30%', posY: '50%', luminance: 0.8, color: 'blueish', name: 'Bellatrix', type: 'Giant', distance: 240, description: '', connectedStarId: ['star1', 'star4'] },
-    { id: 'star3', posX: '40%', posY: '55%', luminance: 0.75, color: 'white', name: 'Mintaka', type: 'Main Sequence', distance: 1200, description: 'Part of Orion\'s Belt', connectedStarId: ['star1', 'star4', 'star5'] },
-    { id: 'star4', posX: '35%', posY: '60%', luminance: 0.85, color: 'blueish', name: 'Alnilam', type: 'Supergiant', distance: 1340, description: 'Bright star in Orion\'s Belt', connectedStarId: ['star3', 'star5'] },
-    { id: 'star5', posX: '45%', posY: '65%', luminance: 0.8, color: 'white', name: 'Alnitak', type: 'Giant', distance: 1260, description: 'Third star in Orion\'s Belt', connectedStarId: ['star3', 'star4'] },
-    { id: 'star6', posX: '50%', posY: '70%', luminance: 0.85, color: 'red', name: 'Saiph', type: 'Supergiant', distance: 720, description: '', connectedStarId: ['star5'] },
-    { id: 'star7', posX: '55%', posY: '75%', luminance: 0.9, color: 'blueish', name: 'Rigel', type: 'Supergiant', distance: 860, description: 'Bright blue star in Orion', connectedStarId: ['star5', 'star6'] }
-  ]
-};
-
-
 // Get the container element
 const starContainer = document.getElementById('star-container');
 const homeSection = document.getElementById('sectionHome');
@@ -33,7 +10,7 @@ function createLabel(star) {
   // Create separate lines for name, type, distance, and optional description
   const titleElem = document.createElement('div');
   titleElem.classList.add('label-name');
-  titleElem.innerHTML = `<div class="label-name">${star.name} <span class="label-type">(${star.type.toUpperCase()})</span></div>`
+  titleElem.innerHTML = `<div class="label-name">${star.name} <span class="label-type">(${(star.type) ? star.type.toUpperCase() : "---"})</span></div>`
   titleElem.style.color = getColorRGBA(star.color)
 
   const distanceElem = document.createElement('div');
@@ -45,20 +22,24 @@ function createLabel(star) {
   descriptionElem.innerText = star.description || '';
 
   // Append each line to the label
-  labelElem.append(titleElem, distanceElem);
+  labelElem.append(titleElem);
+  if (star.distance) labelElem.appendChild(distanceElem);
   if (star.description) labelElem.appendChild(descriptionElem);
 
   labelElem.style.position = 'absolute';
   labelElem.style.visibility = 'hidden'; // Start hidden, show on hover
   return labelElem;
 }
+
 function displayStars(stars) {
   stars.forEach(star => {    
   // Create star element
     const starElem = document.createElement('div');
     starElem.classList.add('star');
-    starElem.style.top = star.posY;
-    starElem.style.left = star.posX;
+    let posX = (star.posX/10 * 9/16 + 9/16/2*100 + 7) + "%"
+    let posY = (star.posY/10 - 10) + "%"
+    starElem.style.top = posY;
+    starElem.style.left = posX;
 
   // Set connectedStarId as a data attribute
     starElem.dataset.id = `${star.id}-${currentConstellationIndex}`;  // Set data-id attribute
@@ -78,8 +59,8 @@ function displayStars(stars) {
   // Create the hitbox div
     const hitbox = document.createElement('div');
     hitbox.classList.add('star-hitbox'); // Add a class for styling
-    hitbox.style.top = star.posY; // Set the same position as the star
-    hitbox.style.left = star.posX; // Set the same position as the star
+    hitbox.style.left = posX; // Set the same position as the star
+    hitbox.style.top = posY; // Set the same position as the star
     // const hitboxSize = 40;
     // hitbox.style.transform = `translateX(${-hitboxSize}px)`;
     // hitbox.style.transform = `translateY(${-hitboxSize}px)`;
@@ -106,8 +87,8 @@ function clearCurrentStars(stars) {
 }
 function getColorRGBA(color) {
   switch (color) {
-    case 'bluish': return `rgb(176, 221, 255)`; // light blue
-    case 'reddish': return `rgb(255, 172, 172)`;   // Light red
+    case 'blue-white': return `rgb(176, 221, 255)`; // light blue
+    case 'red': return `rgb(255, 172, 172)`;   // Light red
     case 'white': return `rgb(255, 255, 255)`;   // White
     default: return `rgb(255, 255, 255)`;
   }

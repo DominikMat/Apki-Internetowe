@@ -1,47 +1,58 @@
 form {
-    max-width: 400px;
-    margin: auto;
+    width: 60%;
+    margin: 0;
     background: transparent;
     background-color: transparent;
 }
+.sideSection {
+    overflow: hidden;
+    position: relative;
+}
 .contact-container {
-    position:absolute;
-    top: 160px;
-    left: 1260px;
-    width: 100%;
-    height: 100%;
+    /* top: 160px;
+    left: 1260px; */
+    padding-top: 1%;
+    top: 10%;
+    left: 10%;
+    bottom: 50px;
+    /* background-color: rgba(255, 255, 255, 0.2); Semi-transparent background */
+    width: 65%;
+    margin-left: 2%;
+    position: absolute; /* Ensure the form is positioned relative to this container */
   }
 input, textarea {
-    width: 152%;
+    width: 155%;
     border: transparent;
     border-radius: 4px;
     background: transparent;
-    padding: 25px;
+    padding-left: 10%;
 }
 .emailInput {
-    color: lightgrey;
-    font-size: 40px;
+    color: rgba(211, 211, 211, 0.521);
+    font-size: 32px;
 }
 .topicInput {
-    font-size: 50px;
-    margin-top: 36px;
-    color: white;
+    font-size: 30px;
+    margin-top: 18%;
+    color: rgba(255, 255, 255, 0.658);
+    background-color: transparent;
+    width: 130%;
+    margin-left: 20%;
+    border-color: transparent;
+}
+select:focus {
+    outline: none; /* Remove default outline */
+    border-color: #0056b3; /* Change border color on focus */
+}
+option {
+    color: black;
 }
 .bodyInput {
-    color: grey;
+    color: rgba(128, 128, 128, 0.712);
     font-size: 25px;
-    padding-bottom: 300px;
+    margin-top: 8%;
+    padding-bottom: 50%;
 }
-.contactButton {
-    padding: 10px;
-    transform: translate(275px);
-    background-color: transparent;
-    color: transparent;
-    border-color: white;
-    border-width: 2px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.contactButton:hover {
-    border-color: #45a049;
+#contactButton {
+    margin-left: 65%;
 }
