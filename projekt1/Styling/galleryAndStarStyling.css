@@ -27,3 +27,36 @@
   overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
+
+#star-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+  
+.star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;  /* Default color for fallback */
+  border-radius: 2px;
+  transform: rotate(45deg);  /* Rotate the square by 45 degrees */
+}
+
+@keyframes fadeInStar {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutStar {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

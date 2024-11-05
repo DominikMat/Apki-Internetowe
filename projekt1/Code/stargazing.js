@@ -1,3 +1,42 @@
+const constellations = {
+  orion: [
+  { id: 'bet', name: 'Betelgeuse', posX: '280', posY: '428', connectedStarId: ['mel', 'alt'], luminance: 0.9, color: 'red', type: 'Supergiant', distance: 642, description: 'Massive red supergiant star often mentioned in fiction for its size and brightness.' },
+  { id: 'rig', name: 'Rigel', posX: '570', posY: '883', connectedStarId: ['sap', 'min'], luminance: 0.8, color: 'blue', type: 'Blue Supergiant', distance: 860, description: 'A brilliant blue supergiant, one of the most luminous stars in Orion.' },
+  { id: 'bel', name: 'Bellatrix', posX: '493', posY: '470', connectedStarId: ['mel', 'min','14'], luminance: 0.6, color: 'blue-white', type: 'Blue Giant', distance: 243, description: 'Known as the Amazon Star, a powerful giant star.' },
+  { id: 'min', name: 'Mintaka', posX: '491', posY: '650', connectedStarId: ['bel', 'anl','rig'], luminance: 0.7, color: 'white', type: 'Binary Star System', distance: 916, description: 'One of the three stars in Orion’s Belt.' },
+  { id: 'anl', name: 'Alnilam', posX: '421', posY: '683', connectedStarId: ['min', 'alt'], luminance: 0.6, color: 'blue-white', type: 'Blue Supergiant', distance: 1340, description: 'The central star of Orion’s Belt.' },
+  { id: 'alt', name: 'Alnitak', posX: '382', posY: '709', connectedStarId: ['anl','sap','bet'], luminance: 0.6, color: 'blue-white', type: 'Triple Star System', distance: 736, description: '' },
+  { id: 'mel', name: 'Melissa', posX: '424', posY: '368', connectedStarId: ['bet','bel'], luminance: 0.6, color: 'blue-white', type: 'Triple Star System', distance: 736, description: '' },
+  { id: 'sap', name: 'Saiph', posX: '332', posY: '926', connectedStarId: ['alt','rig'], luminance: 0.6, color: 'blue-white', type: 'Triple Star System', distance: 736, description: '' },
+  { id: '14', name: '14', posX: '617', posY: '406', connectedStarId: ['bel','pi1'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' },
+  { id: 'pi1', name: 'π1', posX: '704', posY: '358', connectedStarId: ['14','pi2'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' },
+  { id: 'pi2', name: 'π2', posX: '740', posY: '394', connectedStarId: ['pi3','pi1'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' },
+  { id: 'pi3', name: 'π3', posX: '746', posY: '445', connectedStarId: ['pi4','pi2'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' },
+  { id: 'pi4', name: 'π4', posX: '734', posY: '491', connectedStarId: ['pi5','pi3'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' },
+  { id: 'pi5', name: 'π5', posX: '718', posY: '573', connectedStarId: ['pi6','pi4'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '', },
+  { id: 'pi6', name: 'π6', posX: '691', posY: '595', connectedStarId: ['pi5'], luminance: 0.6, color: 'blue-white', type: null, distance: null, description: '' }
+  ],
+ 
+  bigDipper: [
+  { id: 'dub', name: 'Dubhe', posX: '514', posY: '374', connectedStarId: ['meg', 'mer'], luminance: 0.8, color: 'white', type: 'Giant', distance: 123, description: 'Part of the Big Dipper asterism, marks the tip of the bowl.' },
+  { id: 'mer', name: 'Merak', posX: '515', posY: '464', connectedStarId: ['dub', 'phe'], luminance: 0.7, color: 'white', type: 'Main Sequence Star', distance: 79, description: 'The star at the bottom right corner of the Big Dipper’s bowl.' },
+  { id: 'phe', name: 'Phecda', posX: '388', posY: '493', connectedStarId: ['meg', 'mer'], luminance: 0.7, color: 'white', type: 'Main Sequence Star', distance: 84, description: 'One of the bowl stars of the Big Dipper, helps in finding the North Star.' },
+  { id: 'meg', name: 'Megrez', posX: '350', posY: '430', connectedStarId: ['dub', 'phe'], luminance: 0.8, color: 'white', type: 'Main Sequence Star', distance: 80, description: 'Marks the corner where the handle meets the bowl of the Big Dipper.' },
+  { id: 'ali', name: 'Alioth', posX: '265', posY: '418', connectedStarId: ['meg', 'miz'], luminance: 0.8, color: 'white', type: 'Main Sequence Star', distance: 81, description: 'Brightest star in the handle of the Big Dipper.' },
+  { id: 'miz', name: 'Mizar', posX: '190', posY: '407', connectedStarId: ['meg','alk'], luminance: 0.9, color: 'white', type: 'Binary System', distance: 78, description: 'A famous binary system in the Big Dipper’s handle.' },
+  { id: 'alk', name: 'Alkaid', posX: '90', posY: '455', connectedStarId: ['miz'], luminance: 0.6, color: 'white', type: 'Main Sequence Star', distance: 101, description: 'The tip of the Big Dipper’s handle.', }
+  ],
+ 
+  cassiopeia: [
+  { id: 'sch', name: 'Schedar', posX: '635', posY: '736', connectedStarId: ['cap', 'nav'], luminance: 0.6, color: 'white', type: 'Giant', distance: 228, description: 'A red giant and the brightest star in Cassiopeia.' },
+  { id: 'cap', name: 'Caph', posX: '850', posY: '545', connectedStarId: ['sch'], luminance: 0.5, color: 'white', type: 'Main Sequence Star', distance: 55, description: 'One of the five stars forming the “W” of Cassiopeia.' },
+  { id: 'nav', name: 'Navi', posX: '499', posY: '494', connectedStarId: ['ruc', 'sch'], luminance: 0.5, color: 'blue-white', type: 'Blue Giant', distance: 613, description: 'Also known as Tsih, often used in navigation.' },
+  { id: 'ruc', name: 'Ruchbah', posX: '275', posY: '509', connectedStarId: ['seg', 'nav'], luminance: 0.5, color: 'white', type: 'Giant', distance: 99, description: 'Forms part of the W shape in Cassiopeia.' },
+  { id: 'seg', name: 'Segin', posX: '113', posY: '274', connectedStarId: ['ruc'], luminance: 0.5, color: 'blue-white', type: 'Blue Giant', distance: 441, description: 'The fifth star completing Cassiopeia’s W shape.', }
+  ]
+ 
+ }
+
 // Get the container element
 const starContainer = document.getElementById('star-container');
 const homeSection = document.getElementById('sectionHome');
