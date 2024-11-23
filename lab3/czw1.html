@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> laborek 3 </title>
+    <body>
+        <h1> Stoper </h1>
+    <p id="stoperId"> hh:mm:ss </p>
+    <button onclick="startTimer()"> Start </button>
+    <button onclick="stopTimer()"> Stop </button>
+    <button onclick="resetTimer()"> Reset </button>
+    
+    <script>
+        const timer = document.getElementById("stoperId")
+        sec = 0
+        min = 0
+        hours = 0
+        timerActive = true
+    
+        function startTimer() {
+            timerActive = true
+            sec = -1
+            incrementTimer()
+        }
+        function stopTimer() {
+            timerActive = false
+            timer.innerHTML = "stopped"
+        }
+        function resetTimer() {
+            sec = min = hours = 0
+            startTimer()
+        }
+        function incrementTimer () {
+            if (!timerActive) return;
+    
+            sec += 1
+            if (sec == 60) { sec = 0; min += 1; }
+            if (min == 60) { min = 0; hours += 1; }
+    
+            if (hours == 0 && min == 0){
+                timer.innerText = sec + "s";
+            }
+            else if (hours == 0) {
+                timer.innerHTML = min + "min " + sec + "s"
+            }
+            else {
+                timer.innerHTML = hours + "h " + min + "min " + sec + "s"
+            }
+    
+            setTimeout(incrementTimer,100);
+        }
+    
+    </script>
+</body>
+</head>
+</html>

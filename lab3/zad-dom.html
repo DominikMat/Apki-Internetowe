@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Giera Zombie </title>
+  <link rel="stylesheet" href="gierka-style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="score">0</div>
+    <div id="lives">
+      <img src="images/full_heart.png" class="heart" id="heart1">
+      <img src="images/full_heart.png" class="heart" id="heart2">
+      <img src="images/full_heart.png" class="heart" id="heart3">
+    </div>
+    <div id="game-over-popup">
+      <p>Gra skończona! Twój wynik: <span id="final-score"></span></p>
+      <button id="restart-btn">Zagraj ponownie</button>
+    </div>
+    <canvas id="game-canvas"></canvas>
+  </div>
+  <audio id="sad-music" loop>
+    <source src="images/sad-music.mp3" type="audio/mpeg">
+  </audio>
+  <script src="gierka-script.js"></script>
+</body>
+</html>

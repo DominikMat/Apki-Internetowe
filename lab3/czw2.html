@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Generator Hasel </title>
+</head>
+<body>
+    <label> Min Password Length: <input id="minLen" type="number" placeholder="Min Password Length"> </label>
+    <br>
+    <label> Max Password Length: <input id="maxLen" type="number" placeholder="Max Password Length"> </label>
+    <br>
+    <label> Capital Letters: <input id="capitalLetters" type="checkbox" placeholder="Capital Letters?"> </label>
+    <br>
+    <label> Special Characters: <input id="specialChars" type="checkbox" placeholder="Special Characters" > </label>
+
+    <br>
+    <br>
+    <br>
+    <button onclick="generatePass()"> GENERATE </button>
+    <h1> Generated: </h1>
+    <p id="generatedPass"> --- </p>
+
+    <script>
+        const pass = document.getElementById("generatedPass")
+        let minLen = 0
+        let maxLen = 0
+        let capitalLetters = false
+        let specialChars = false
+
+        const uppercaseLetters = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        ];
+        const lowercaseLetters = [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+        'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+        ];
+        const specialCharacters = [
+        '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', 
+        ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+        ];
+
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+        function generatePass() {
+            getInputValues()
+            let len = getRandomInt(minLen,maxLen)
+            let passStr = ""
+
+            for (let i=0; i<len; i++) {
+                passStr += getRandomChar()
+            }
+
+            pass.innerText = passStr
+            alert (passStr)
+        }
+
+        function getRandomChar() {
+            let randCategory = 0
+            if (capitalLetters && specialChars) randCategory = getRandomInt(0,2);
+            if (capitalLetters && !specialChars) randCategory = getRandomInt(0,1);
+            if (!capitalLetters && specialChars) randCategory = getRandomInt(0,1)*2;
+            if (!capitalLetters && !specialChars) randCategory = 0;
+
+            let letter = "_"
+            let ix = 0
+
+            switch (randCategory) {
+                case 0: ix=getRandomInt(0,lowercaseLetters.length-1); letter = lowercaseLetters[ix]; break;
+                case 1: ix=getRandomInt(0,uppercaseLetters.length-1); letter = uppercaseLetters[ix]; break;
+                case 2: ix=getRandomInt(0,specialCharacters.length-1); letter = specialCharacters[ix]; break;
+            }
+            return letter
+        }
+
+        function getInputValues () {
+            minLen = parseInt( document.getElementById("minLen").value )
+            maxLen = parseInt( document.getElementById("maxLen").value )
+            capitalLetters = document.getElementById("capitalLetters").checked
+            specialChars = document.getElementById("specialChars").checked
+        }
+
+    </script>
+</body>
+</html>

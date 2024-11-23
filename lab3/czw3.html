@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dane json z API</title>
+  <style>
+    th, td {
+      border: 1px solid #ddd;
+    }
+    th {
+        background-color: lightgrey;
+    }
+    img {
+      max-width: 50px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Ćwiczenie 3: Pobieranie danych z API</h1>
+
+  <div class="controls">
+    <input type="text" id="filter" placeholder="Filtruj dane...">
+    <select id="sort">
+      <option value="original">Oryginalna kolejność</option>
+      <option value="asc">Sortuj rosnąco</option>
+      <option value="desc">Sortuj malejąco</option>
+    </select>
+  </div>
+
+  <br>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Zdjęcie</th>
+        <th>Tytuł</th>
+        <th>Opis</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <!-- Dane zostaną tutaj wstawione -->
+    </tbody>
+  </table>
+
+  <script>
+    const API_URL = 'https://dummyjson.com/products';
+    const tableBody = document.getElementById('table-body');
+    const filterInput = document.getElementById('filter');
+    const sortSelect = document.getElementById('sort');
+    let products = [];
+    let displayedProducts = [];
+
+    // Funkcja pobierająca dane z API
+    async function fetchData() {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    products = data.products.slice(0, 30); // Pobierz pierwsze 30 elementów
+    displayedProducts = [...products];
+    renderTable();
+    }
+
+    // Funkcja renderująca tabelę
+    function renderTable() {
+      tableBody.innerHTML = '';
+      displayedProducts.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><img src="${product.thumbnail}" alt="Zdjęcie"></td>
+          <td>${product.title}</td>
+          <td>${product.description}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Funkcja filtrowania danych
+    function filterData() {
+      const query = filterInput.value.toLowerCase();
+      displayedProducts = products.filter(product =>
+        product.title.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query)
+      );
+      applySorting();
+    }
+
+    // Funkcja sortowania danych
+    function applySorting() {
+      const sortOption = sortSelect.value;
+      if (sortOption === 'asc') {
+        displayedProducts.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sortOption === 'desc') {
+        displayedProducts.sort((a, b) => b.title.localeCompare(a.title));
+      } else {
+        displayedProducts = [...products];
+      }
+      renderTable();
+    }
+
+    // Obsługa wydarzeń
+    filterInput.addEventListener('input', filterData);
+    sortSelect.addEventListener('change', applySorting);
+
+    // Inicjalizacja
+    fetchData();
+  </script>
+
+</body>
+</html>
